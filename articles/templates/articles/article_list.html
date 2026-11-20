@@ -1,0 +1,12 @@
+{% extends 'articles/base.html' %}
+{% block title %}Все статьи{% endblock %}
+{% block content %}
+  <div class="page-heading"><div><p class="eyebrow">Статьи</p><h1>Все статьи</h1><p class="muted">Читайте материалы по интересным темам.</p></div></div>
+  <form class="search" method="get" action="{% url 'article_list' %}">
+    <label for="search-q">Поиск по заголовку</label>
+    <div class="search-row"><input id="search-q" name="q" value="{{ q }}" placeholder="Введите слово…"><button type="submit">Найти</button></div>
+  </form>
+  {% if categories %}<div class="categories"><span>Категории:</span>{% for category in categories %}<a href="{% url 'category_detail' category.slug %}">{{ category.name }}</a>{% endfor %}</div>{% endif %}
+  {% include 'articles/_article_cards.html' %}
+  {% include 'articles/_pagination.html' %}
+{% endblock %}

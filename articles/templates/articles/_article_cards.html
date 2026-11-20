@@ -1,0 +1,12 @@
+{% if articles %}
+  <div class="article-grid">
+    {% for article in articles %}
+      <article class="card">
+        <div class="card-meta"><a class="tag" href="{% url 'category_detail' article.category.slug %}">{{ article.category.name }}</a><time datetime="{{ article.created_at|date:'c' }}">{{ article.created_at|date:'d.m.Y' }}</time></div>
+        <h2><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h2>
+        <p>{{ article.text|truncatewords:25 }}</p>
+        <a class="read-more" href="{% url 'article_detail' article.pk %}">Читать статью →</a>
+      </article>
+    {% endfor %}
+  </div>
+{% else %}<div class="empty">Статей пока нет.</div>{% endif %}

@@ -1,0 +1,19 @@
+{% load static %}
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Статьи{% endblock %} · Блог</title>
+  <link rel="stylesheet" href="{% static 'articles/style.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{% url 'article_list' %}">Блог</a>
+      <nav><a href="{% url 'article_list' %}">Все статьи</a><a href="/admin/">Админка</a></nav>
+    </div>
+  </header>
+  <main class="container">{% block content %}{% endblock %}</main>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{% extends 'articles/base.html' %}
+{% block title %}{{ article.title }}{% endblock %}
+{% block content %}
+  <article class="detail">
+    <a class="back-link" href="{% url 'article_list' %}">← Все статьи</a>
+    <div class="detail-meta"><a class="tag" href="{% url 'category_detail' article.category.slug %}">{{ article.category.name }}</a><time datetime="{{ article.created_at|date:'c' }}">{{ article.created_at|date:'d.m.Y' }}</time></div>
+    <h1>{{ article.title }}</h1>
+    <div class="article-body">{{ article.text|linebreaks }}</div>
+  </article>
+{% endblock %}
